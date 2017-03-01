@@ -1,0 +1,57 @@
+<nav>
+    <div class="nav-wrapper">
+        <form>
+            <div class="input-field">
+                <input [(ngModel)]="searchUser" #inputSearch (keyup)="updateSearch()" name="searchUser" id="search" type="search" placeholder="Search Github users"
+                    required>
+                <label for="search"><i class="material-icons"></i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+</nav>
+<div *ngIf="searchUser?.length > 0">
+    <div class="col s12 m7">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img *ngIf="user.avatar_url" src="{{ user.avatar_url }}">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h4 *ngIf="user.login">Username: <a href="{{ user.html_url }}">{{ user.login }}</a></h4>
+                    <h4 *ngIf="user.name">Name: {{ user.name }}</h4>
+                    <h4 *ngIf="user.company">Company: {{ user.company }}</h4>
+                    <h4 *ngIf="user.location">Location: {{ user.location }}</h4>
+                    <h4 *ngIf="user.bio">Bio: {{ user.bio }}</h4>
+                    <h4 *ngIf="user.created_at">Created: {{ user.created_at }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let repo of repos">
+            <div class="col s12 m6">
+                <div class="card-panel red lighten-2">
+                    <h5><a class="grey-text text-lighten-5" href="{{ repo.html_url }}">{{ repo.name }}</a></h5>
+                    <h5 *ngIf="repos.description">{{ repo.description }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="http://anna.fi/wp-content/uploads/2015/09/630400kissa.jpg"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">Parallax</h2>
+      <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img src="images/parallax2.jpg"></div>
+  </div>
+      
